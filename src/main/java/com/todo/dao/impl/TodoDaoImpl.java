@@ -55,13 +55,13 @@ public class TodoDaoImpl implements ITodoDao {
 		if(!Util.isNull(status)){
 			
 			if(status.equals("Completed")){
-				todoListCriteria.add(Restrictions.eq("status", 2));
-				todoListCountCriteria.add(Restrictions.eq("status", 2));
+				todoListCriteria.add(Restrictions.eq("statusId", 2L));
+				todoListCountCriteria.add(Restrictions.eq("statusId", 2L));
 
 
 			}else if(status.equals("Pending")){
-				todoListCriteria.add(Restrictions.eq("status", 1));
-				todoListCountCriteria.add(Restrictions.eq("status", 1));
+				todoListCriteria.add(Restrictions.eq("statusId", 1L));
+				todoListCountCriteria.add(Restrictions.eq("statusId", 1L));
 
 			}
 		}

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -62,7 +63,6 @@ public class TodoDaoImpl implements ITodoDao {
 				todoListCriteria.add(Restrictions.eq("status", 1));
 				todoListCountCriteria.add(Restrictions.eq("status", 1));
 
-
 			}
 		}
 		
@@ -72,10 +72,23 @@ public class TodoDaoImpl implements ITodoDao {
 
 		}
 		
+		if(!Util.isNull(sortBy)){
+			
+			if(!Util.isNull(sortType)&&sortType.equalsIgnoreCase("desc")){
+				todoListCriteria.addOrder(Order.desc(sortBy));
+			}else{
+				todoListCriteria.addOrder(Order.asc(sortBy));
+
+			}
+		}
+		
 		todoListCountCriteria.setProjection(Projections.count("id"));
 		
-		if(!Util.isNull(limit)&&!Util.isNull(offset)){
+		if(!Util.isNull(limit)){
 			todoListCriteria.setMaxResults(limit);
+		}
+		
+		if(!Util.isNull(offset)){
 			todoListCriteria.setFirstResult(offset);
 		}
 		

@@ -85,6 +85,18 @@ public class TodoController {
         return res;
 	}
     
+    @RequestMapping(path="/todo/{id}/mark",method = RequestMethod.PUT)
+    public TodoResponse markCompleted(@PathVariable("id")Long id){
+        
+    	TodoResponse res = new TodoResponse();
+    	TodoTransaction markCompleted = DataTransformer.setMarkAsCompleted(id);
+		res.setTodoRespone(iTodoService.saveOrUpdateTodo(markCompleted));
+		res.setMessage(CommonConstants.SUCCESS);
+		res.setStatus(CommonConstants.OK);
+		
+        return res;
+	}
+    
     
 	
 }

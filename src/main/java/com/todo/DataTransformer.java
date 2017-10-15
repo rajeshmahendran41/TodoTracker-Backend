@@ -30,6 +30,19 @@ public class DataTransformer {
     	todoListResponse.setTodoResponse((List<TodoTransaction>) todoMapResponse.get("list"));
     	return todoListResponse;
 
+    }
+	
+	
+	public static TodoTransaction setMarkAsCompleted(Long id){
+    	
+    	TodoTransaction markCompleted = new TodoTransaction();
+    	if(!Util.isNull(id)){
+    		markCompleted.setStatusId(2L);
+    		markCompleted.setId(id);
+    	}else{
+    		Util.throwException("Id Field cant be null");
+    	}
+    	return markCompleted;
 
     }
 }

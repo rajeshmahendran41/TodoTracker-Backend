@@ -47,23 +47,31 @@ public class TodoDaoImpl implements ITodoDao {
 		Criteria todoListCriteria=   sessionFactory.getCurrentSession().createCriteria(TodoTransaction.class)
 		.add(Restrictions.eq("isDeleted", false));
 		
+		Criteria todoListCountCriteria=   sessionFactory.getCurrentSession().createCriteria(TodoTransaction.class)
+				.add(Restrictions.eq("isDeleted", false));
+		
 	
 		if(!Util.isNull(status)){
 			
 			if(status.equals("Completed")){
 				todoListCriteria.add(Restrictions.eq("status", 2));
+				todoListCountCriteria.add(Restrictions.eq("status", 2));
+
 
 			}else if(status.equals("Pending")){
 				todoListCriteria.add(Restrictions.eq("status", 1));
+				todoListCountCriteria.add(Restrictions.eq("status", 1));
+
 
 			}
 		}
 		
 		if(!Util.isNull(query)){
 			todoListCriteria.add(Restrictions.ilike("title", "%"+query+"%"));
+			todoListCountCriteria.add(Restrictions.ilike("title", "%"+query+"%"));
+
 		}
 		
-		Criteria todoListCountCriteria = todoListCriteria ;
 		todoListCountCriteria.setProjection(Projections.count("id"));
 		
 		if(!Util.isNull(limit)&&!Util.isNull(offset)){

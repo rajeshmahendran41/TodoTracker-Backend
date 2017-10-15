@@ -8,10 +8,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.Util.Util;
+import com.constants.CommonConstants;
+import com.constants.TodoConstants;
 import com.todo.bean.TodoTransaction;
 import com.todo.dao.ITodoDao;
 import com.todo.service.ITodoService;
-
+/**
+ * 
+ * @author rajesh
+ *
+ */
 @Service
 public class TodoServiceImpl implements ITodoService {
 	
@@ -29,7 +35,7 @@ public class TodoServiceImpl implements ITodoService {
 			return iTodoDao.getTodo(id,sessionFactory);
 		}else{
 			
-			Util.throwException("Id Can't Be null");
+			Util.throwException(TodoConstants.ID_CANT_BE_NULL);
 		}
 		return null;
 	}
@@ -46,8 +52,10 @@ public class TodoServiceImpl implements ITodoService {
 		}else{
 			todoRequest.setCreatedAt(Util.getCurrentTimeStamp());
 			todoRequest.setUpdatedAt(Util.getCurrentTimeStamp());
-			todoRequest.setStatusId(1L);
+			todoRequest.setStatusId(CommonConstants.ONE);
 		}
+		
+		validateData(todoRequest);
 		
 		todoRequest = iTodoDao.saveOrUpdateTodo(todoRequest,sessionFactory);			
 		return todoRequest;
@@ -85,6 +93,14 @@ public class TodoServiceImpl implements ITodoService {
 			Integer limit, Integer offset, String sortBy, String sortType,
 			String query) {
 		return iTodoDao.getTodoList(status,limit,offset,sortBy,sortType,query,sessionFactory);
+	}
+	
+	public void validateData(TodoTransaction todoRequest){
+		if(Util.isNull(todoRequest.getTitle())){
+			Util.throwException(TodoConstants.TITLE_CANT_BE_NULL);
+		}else if(Util.isNull(todoRequest.getDescription())){
+			Util.throwException(TodoConstants.DESCRIPTION_CANT_BE_NULL);
+		}
 	}
 
 	

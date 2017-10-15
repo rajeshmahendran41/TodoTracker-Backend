@@ -12,9 +12,14 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.Util.Util;
+import com.constants.CommonConstants;
 import com.todo.bean.TodoTransaction;
 import com.todo.dao.ITodoDao;
-
+/**
+ * 
+ * @author rajesh
+ *
+ */
 @Repository
 public class TodoDaoImpl implements ITodoDao {
 
@@ -55,13 +60,13 @@ public class TodoDaoImpl implements ITodoDao {
 		if(!Util.isNull(status)){
 			
 			if(status.equals("Completed")){
-				todoListCriteria.add(Restrictions.eq("statusId", 2L));
-				todoListCountCriteria.add(Restrictions.eq("statusId", 2L));
+				todoListCriteria.add(Restrictions.eq("statusId", CommonConstants.TWO));
+				todoListCountCriteria.add(Restrictions.eq("statusId", CommonConstants.TWO));
 
 
 			}else if(status.equals("Pending")){
-				todoListCriteria.add(Restrictions.eq("statusId", 1L));
-				todoListCountCriteria.add(Restrictions.eq("statusId", 1L));
+				todoListCriteria.add(Restrictions.eq("statusId", CommonConstants.ONE));
+				todoListCountCriteria.add(Restrictions.eq("statusId", CommonConstants.ONE));
 
 			}
 		}

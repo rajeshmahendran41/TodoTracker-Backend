@@ -1,6 +1,11 @@
 package com.aspect;
 
 import java.sql.Timestamp;
+/**
+ * 
+ * @author rajesh
+ *
+ */
 
  public class AspectException
    extends RuntimeException

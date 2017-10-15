@@ -15,7 +15,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.constants.CommonConstants;
-
+/**
+ * 
+ * @author rajesh
+ *
+ */
 
 @Entity
 @Table(name = "todo_transaction", schema = CommonConstants.SCHEMA)

@@ -1,7 +1,11 @@
 package com.response;
 
 import java.sql.Timestamp;
-
+/**
+ * 
+ * @author rajesh
+ *
+ */
 public class CommonResponse {
 
 	private Timestamp timestamp;

@@ -9,13 +9,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.constants.CommonConstants;
+import com.constants.TodoConstants;
 import com.todo.DataTransformer;
 import com.todo.bean.TodoTransaction;
 import com.todo.service.ITodoService;
 import com.todo.to.request.TodoRequest;
 import com.todo.to.response.TodoListResponse;
 import com.todo.to.response.TodoResponse;
-
+/**
+ * 
+ * @author rajesh
+ *
+ */
 
 @RestController
 @RequestMapping("/api")
@@ -29,7 +34,7 @@ public class TodoController {
         
     	TodoResponse res = new TodoResponse();
 		res.setTodoRespone(iTodoService.getTodo(id));
-		res.setMessage(CommonConstants.SUCCESS);
+		res.setMessage(TodoConstants.TODO_FETCH_SUCCESS);
 		res.setStatus(CommonConstants.OK);
 		
         return res;
@@ -40,7 +45,7 @@ public class TodoController {
         
     	TodoResponse res = new TodoResponse();
 		res.setTodoRespone(iTodoService.saveOrUpdateTodo(todoRequest.getTodoDetails()));
-		res.setMessage(CommonConstants.SUCCESS);
+		res.setMessage(TodoConstants.TODO_ADDED_SUCCESS);
 		res.setStatus(CommonConstants.OK);
 		
         return res;
@@ -51,7 +56,7 @@ public class TodoController {
         
     	TodoResponse res = new TodoResponse();
 		res.setTodoRespone(iTodoService.saveOrUpdateTodo(todoRequest.getTodoDetails()));
-		res.setMessage(CommonConstants.SUCCESS);
+		res.setMessage(TodoConstants.TODO_UPDATED_SUCCESS);
 		res.setStatus(CommonConstants.OK);
 		
         return res;
@@ -63,7 +68,7 @@ public class TodoController {
     	TodoResponse res = new TodoResponse();
     	TodoTransaction deleteTansaction = DataTransformer.setDeleteTransactionDetails(id);
 		res.setTodoRespone(iTodoService.saveOrUpdateTodo(deleteTansaction));
-		res.setMessage(CommonConstants.SUCCESS);
+		res.setMessage(TodoConstants.TODO_DELETED_SUCCESS);
 		res.setStatus(CommonConstants.OK);
 		
         return res;
@@ -79,7 +84,7 @@ public class TodoController {
         
     	TodoListResponse res = new TodoListResponse();
 		res = DataTransformer.transformTodoListDetails(iTodoService.getTodoList(status,limit,offset,sortBy,sortType,query));
-		res.setMessage(CommonConstants.SUCCESS);
+		res.setMessage(TodoConstants.TODO_FETCH_SUCCESS);
 		res.setStatus(CommonConstants.OK);
 		
         return res;
@@ -91,7 +96,7 @@ public class TodoController {
     	TodoResponse res = new TodoResponse();
     	TodoTransaction markCompleted = DataTransformer.setMarkAsCompleted(id);
 		res.setTodoRespone(iTodoService.saveOrUpdateTodo(markCompleted));
-		res.setMessage(CommonConstants.SUCCESS);
+		res.setMessage(TodoConstants.TODO_UPDATED_SUCCESS);
 		res.setStatus(CommonConstants.OK);
 		
         return res;

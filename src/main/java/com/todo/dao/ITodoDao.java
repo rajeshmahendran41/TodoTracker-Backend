@@ -5,7 +5,11 @@ import java.util.Map;
 import org.hibernate.SessionFactory;
 
 import com.todo.bean.TodoTransaction;
-
+/**
+ * 
+ * @author rajesh
+ *
+ */
 public interface ITodoDao {
 
 	TodoTransaction getTodo(Long id, SessionFactory sessionFactory);

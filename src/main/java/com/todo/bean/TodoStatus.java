@@ -11,7 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.constants.CommonConstants;
-
+/**
+ * 
+ * @author rajesh
+ *
+ */
 @Entity
 @Table(name = "todo_status_master", schema = CommonConstants.SCHEMA)
 public class TodoStatus  implements Serializable{

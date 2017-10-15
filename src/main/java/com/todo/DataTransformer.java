@@ -4,9 +4,14 @@ import java.util.List;
 import java.util.Map;
 
 import com.Util.Util;
+import com.constants.TodoConstants;
 import com.todo.bean.TodoTransaction;
 import com.todo.to.response.TodoListResponse;
-
+/**
+ * 
+ * @author rajesh
+ *
+ */
 public class DataTransformer {
 	
 	public static TodoTransaction setDeleteTransactionDetails(Long id){
@@ -16,7 +21,7 @@ public class DataTransformer {
 		    	deleteTansaction.setIsDeleted(true);
 		    	deleteTansaction.setId(id);
 	    	}else{
-	    		Util.throwException("Id Field cant be null");
+	    		Util.throwException(TodoConstants.ID_CANT_BE_NULL);
 	    	}
 	    	return deleteTansaction;
 	
@@ -40,7 +45,7 @@ public class DataTransformer {
     		markCompleted.setStatusId(2L);
     		markCompleted.setId(id);
     	}else{
-    		Util.throwException("Id Field cant be null");
+    		Util.throwException(TodoConstants.ID_CANT_BE_NULL);
     	}
     	return markCompleted;
 

@@ -1,49 +1,20 @@
 package com.aspect;
 
 import java.sql.Timestamp;
-/*     */ 
-import java.util.Map;
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ public class AspectException
-/*     */   extends RuntimeException
-/*     */ {
+
+ public class AspectException
+   extends RuntimeException
+ {
 	
 	
-/*     */   private static final long serialVersionUID = 1L;
-/*     */  private Timestamp timestamp;
+   private static final long serialVersionUID = 1L;
+  private Timestamp timestamp;
 			private Integer status;
 			private String error;
 			private String message;
 			private String path;
-/*     */  
-/*     */
+  
+
 			public Timestamp getTimestamp() {
 				return timestamp;
 			}

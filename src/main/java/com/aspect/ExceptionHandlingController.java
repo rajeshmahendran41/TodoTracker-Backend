@@ -40,27 +40,5 @@ public class ExceptionHandlingController extends ResponseEntityExceptionHandler 
         return HttpStatus.valueOf(statusCode);
     }
     
-    
-  /*  public CommonResponse handleException(AspectException pExp,
-            HttpServletRequest request, HttpServletResponse response)
-            //throws JsonGenerationException, JsonMappingException, IOException 
-    {
-
-        CommonResponse primeResponse = new CommonResponse();
-        CommonException error = new CommonException();
-        StringBuilder message = new StringBuilder("");
-        
-        if (!Utility.isNull(pExp)) {
-            message.append(pExp.getFunctionalMessage());
-            error.setFuncMessage("FAILURE");
-            error.setTechMessage(pExp.getTechnicalMessage());
-            primeResponse.setException(error);
-        }
-        
-
-        primeResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-        primeResponse.setMessage("Some Server Error Occured. We will fix it soon");
-        return primeResponse;
-    }*/
 
 }

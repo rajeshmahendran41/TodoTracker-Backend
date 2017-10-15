@@ -8,38 +8,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
-import org.jasypt.util.text.BasicTextEncryptor;
-
 import com.aspect.AspectException;
-import com.ysyt.bean.Roles;
-import com.ysyt.bean.UserBean;
-import com.ysyt.constants.SessionConstant;
 
 
 public final class Util {
 
-    private Util() {
-
-    }
-
-
-    public static String getEncryptedPassword(String password) {
-       
-        BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
-        textEncryptor.setPassword("usut");
-        String token = textEncryptor.encrypt(password);
-        return token;
-    }
-    
-    public static String getDecryptedPassword(String password) {
-	       
-        StandardPBEStringEncryptor textEncryptor = new StandardPBEStringEncryptor();
-        textEncryptor.setPassword("usut");
-        String token = textEncryptor.decrypt(password);
-        return token;
-        
-    }
 
      public static String trim(String stringValueInp) {
         String stringValue = stringValueInp;
@@ -93,32 +66,12 @@ public final class Util {
         return ts;
     }
 
-      
-    public static UserBean getCurrentUser(HttpServletRequest request) {
-        return (UserBean) request.getSession()
-                .getAttribute(SessionConstant.USER_BEAN);
-    }
-    
-    public static Long getUserId(HttpServletRequest request) {
-         return ((UserBean) request.getSession()
-                .getAttribute(SessionConstant.USER_BEAN)).getId();
-    }
-    
-    public static Roles getRolesBean(HttpServletRequest request) {
-        return ((UserBean) request.getSession()
-               .getAttribute(SessionConstant.USER_BEAN)).getRoles();
-   }
     
     public static void throwException(String msg) {
         throw new AspectException(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,"Failure",msg );
     }
 
     
-    public static String[] exculdeApi(){
-    	
-    	return new String[]{"/api/auth/signup","/api/auth/login","/api/accomodation/locations","/api/accomodation/filter","/api/accomodation/list"};
-    	
-    }
        
 
    

@@ -66,6 +66,10 @@ public class TodoServiceImpl implements ITodoService {
 			existingTodoRequest.setDescription(todoRequest.getDescription());
 		}
 		
+		if(!Util.isNull(todoRequest.getStatusId())){
+			existingTodoRequest.setStatusId(todoRequest.getStatusId());
+		}
+		
 		if(!Util.isNull(todoRequest.getIsDeleted())){
 			existingTodoRequest.setIsDeleted(todoRequest.getIsDeleted());
 		}		

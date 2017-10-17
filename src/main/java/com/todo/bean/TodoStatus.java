@@ -27,7 +27,7 @@ public class TodoStatus  implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private Long id;
 	
-	@Column(name="name")
+	@Column(name="status")
 	private String name;
 
 	@Column(name = "is_deleted" ,nullable = false , insertable=false,columnDefinition = "boolean default false")
